@@ -20,6 +20,7 @@ const cache = new InMemoryCache();
 
 // Create the apollo client
 const apolloClient = new ApolloClient({
+  connectToDevTools: true,
   link: httpLink,
   cache,
 });
