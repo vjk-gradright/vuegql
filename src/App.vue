@@ -8,40 +8,6 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from "vue";
-import {
-  ApolloClient,
-  createHttpLink,
-  InMemoryCache,
-} from "@apollo/client/core";
-
-export default Vue.extend({
-  name: "AppShell",
-  data() {
-    return {
-      apolloClient: undefined as unknown as any,
-    };
-  },
-  created() {
-    this.initializeApolloClient();
-  },
-  methods: {
-    initializeApolloClient() {
-      const httpLink = createHttpLink({
-        // You should use an absolute URL here
-        uri: "http://localhost:3020/graphql",
-      });
-      const cache = new InMemoryCache();
-      this.apolloClient = new ApolloClient({
-        link: httpLink,
-        cache,
-      });
-    },
-  },
-});
-</script>
-
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
