@@ -5,10 +5,15 @@ import {
 } from "@apollo/client/core";
 
 // HTTP connection to the API
-const httpLink = createHttpLink({
-  // You should use an absolute URL here
-  uri: "http://localhost:5432/graphql",
-});
+
+const getHttpLink = () => {
+  return createHttpLink({
+    // You should use an absolute URL here
+    uri: process.env.BOOKS_GQL_SERVER,
+  });
+};
+
+const httpLink = getHttpLink();
 
 // Cache implementation
 const cache = new InMemoryCache();
